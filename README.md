@@ -1,8 +1,8 @@
 # Commular
 
 [![NPM Version](http://img.shields.io/npm/v/commular.svg?style=flat)](https://npmjs.org/package/commular)
-[![Build Status](http://img.shields.io/travis/tcorral/commular.svg?style=flat)](https://travis-ci.org/tcorral/commular)
-[![Build status](https://ci.appveyor.com/api/projects/status/rsdrb017s4j93c5y?svg=true)](https://ci.appveyor.com/project/tcorral/commular)
+[![Build Status](http://img.shields.io/travis/commular/commular.svg?style=flat)](https://travis-ci.org/commular/commular)
+[![Build status](https://ci.appveyor.com/api/projects/status/rsdrb017s4j93c5y?svg=true)](https://ci.appveyor.com/project/commular/commular)
 
 
 
