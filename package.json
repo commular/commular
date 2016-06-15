@@ -1,0 +1,40 @@
+{
+  "name": "commular",
+  "bin": "./bin/index.js",
+  "version": "0.3.6",
+  "description": "A modular command line.",
+  "main": "scripts/index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/commular/commular.git"
+  },
+  "keywords": [
+    "command",
+    "modular"
+  ],
+  "author": "Tomas Corral <amischol@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/commular/commular.git/issues"
+  },
+  "homepage": "https://github.com/commular/commular.git#readme",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "npm": "^3.9.5",
+    "q": "^1.4.1",
+    "commular-test": "^0.1.0"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-nodeunit": "^1.0.0"
+  },
+  "modules-prefixes": [
+    "commular"
+  ]
+}
