@@ -5,17 +5,25 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/pbxtgo7ynu06fxf5?svg=true)](https://ci.appveyor.com/project/tcorral/commular-6641k)
 
 
+**Commular** is the easiest way to create your CLI tools using plugins.
 
-**Commular** is the first modular solution to create command line tools enforcing the reusability of the code.
 
 ## Why Commular?
 
-Creating your own command line tool is amazing and can give your the opportunity of explore a new world out of the web but
-some times you will encounter some issues on creating this command line tools because the lack of reusability of that code
-that could be reused in each and every one of your tools and also the problem on sharing that code with others so that other 
-people can have the opportunity of taking advantage of my work.
-Because of all that **Commular** was designed and developed to to implement a pluggable system of easy development 
-without having to invent anything; it's based on [commander](https://github.com/tj/commander.js/) new increasing productivity and code reusability. 
+Creating your own command line tool is amazing and gives you the opportunity of explore a new world out of the web.
+
+Sometimes you will encounter some issues on creating those command line tools because the lack of reusability of code that could be reused in each and every one of your tools.
+
+If you are an open source's fan you will also want to share your code with other people so they can also reuse it and take advantage of your work.
+
+Because of all that **Commular** was designed and developed to be a pluggable framework of easy development without having to invent anything new because it extends existing, and very opinionated, CLI frameworks.
+
+
+### Supported CLI frameworks:: 
+
+* [commander](https://github.com/tj/commander.js/)
+* [vorpal](https://github.com/dthree/vorpal)
+
 
 ## Installation
 
@@ -28,93 +36,184 @@ without having to invent anything; it's based on [commander](https://github.com/
 
 ```bash
 npm install commular --save
-```
+``
 
-## How it works?
-**Commular** has been developed on top of:
-* [commander](https://github.com/tj/commander.js/)
-* [npm](https://github.com/npm/npm)
 
-**Commular** only requires from you to install all those modules that will compose your command line tool 
-using npm then **Commular** will read all those modules and create a single tool with all the commands on it.
+## Quickstart:`
 
-**Commular** uses two different ways to decide what modules it will gonna use:
-1. Reads the property "modules-prefixes" from package.json.
-    a. It can be:
-        i. String
-        ii. Array
-2. If "modules-prefixes" doesn't exist it will read the property "name" from package.json.
-
-> Commular has been designed to be very easy to extend and with the "modules-prefixes" feature you can add your 
-> own modules and also reuse third party modules but for the sake of the community we enforce you to use those created 
-> by the community or even better we want you to create your own packages so that others can enjoy your work.
-
-This method allows you to create your own modules but also reuse third party modules in your command line tool.
-
-## Module Development:
-Create a module that can be used in **Commander** is as easy as following the next steps:
-
-1. Create a module that should accomplish the following naming convention:
-    a. ```MMMMM-XXXX``` where the ```MMMMM``` is the prefix of the module and ```XXX``` is the feature that will be added to your command line.
-    > "commular" is the main prefix for those modules created by the community.
-2. Create your main Javascript file with the following pattern:
-
-```js
-exports.command = function(program) {
-  // example code - start -
-  program
-    .command('setup [env]')
-    .description('run setup commands for all envs')
-    .option("-s, --setup_mode [mode]", "Which setup mode to use")
-    .action(function(env, options){
-      var mode = options.setup_mode || "normal";
-      env = env || 'all';
-      console.log('setup for %s env(s) with %s mode', env, mode);
-    });
-  // example code - end -
-};
-```
-3. Install this package in your tool using npm.
-4. **Commular** will manage it for you.
-5. Enjoy your first modular command line tool.
-
-## Modules:
-* [commular-test](https://github.com/tcorral/commular-test)
-* [commular-bb-generate](https://github.com/tcorral/commular-bb-generate)
-
-## Usage in your tool:
-
-To use it in your command line you only need to:
-
-1. Create your project folder.
-2. Create the package.json file.
-
-```
-npm init
-```
-
-3. Install **Commular** locally.
+1. Use git to clone **Commular** template CLI repo.
 
 ```bash
-npm install commander --save
+git clone https://github.com/commular/commular-cli-template.git <<CLI_NAME>>
 ```
 
-4. Create a bin folder in the root of your project folder.
-5. Create a index.js file in the bin folder with the following code:
+3. Use ```npm link``` in the root of your project to work locally.
+4. Use ```npm install --save <<COMMULAR_PLUGIN_PACKAGE_NAME>>``` to install plugins.
+5. Test your tool and if you are proud of the result publish it to NPM.
+
+
+## Get started:
+
+**Commular** has been developed on top of:
+
+
+* [npm](https://github.com/npm/npm)
+* [commander](https://github.com/tj/commander.js/)
+* [vorpal](https://github.com/dthree/vorpal)
+
+> You can use *commmander* or *vorpal* with *Commular*.
+
+### Create your CLI tool in less than 2 minutes:
+1. Use git to clone **Commular** repo.
+
+```bash
+git clone https://github.com/commular/commular.git <<CLI_NAME>>
+```
+
+2. Edit package.json and remove all those dependencies that are not required.
+3. Use ```npm link``` in the root of your project to work locally.
+4. Use ```npm install --save <<COMMULAR_PLUGIN_PACKAGE_NAME>>``` to install plugins.
+5. Test your tool and if you are proud of the result publish it to NPM.
+
+
+### How can I tell **Commular** what CLI framework I am gonna use?
+
+It can't be easier... just use npm to install *commander* or *vorpal* and **Commular** will check what module you installed.
+
+```bash
+npm install --save commander
+```
+
+```bash
+npm install --save vorpal
+```
+
+### How I can add one or more plugins?
+
+Use npm to install all the plugins you need **Commular** will manage them for you.
+
+#### Community plugins:
+We work as other pluggable tools (Grunt, Gulp...)
+
+You can find all the plugins reviewed by our team in **Commular** [organization](https://github.com/commular)
+
+You can also could find third party plugins in Github, Bitbucket and NPM, to find them you only have to search for:
+
+```
+commular-
+```
+
+### That sounds good but what if I want or need to create my own plugins.
+You can develop your own plugins you only need to follow some [simple steps](https://commular.github.io/training).
+
+**Commular** as Grunt, Gulp or jQuery enforce you to use our prefix, **commular**, to name your plugins but we also
+understand that sometimes it's not possible so we also though on it and you can define what prefixes want
+**Commular** to manage.
+
+
+> By default **Commular** manages those plugins that are prefixed by **commular** and also those that are prefixed with the same name of your CLI.
+
+
+#### Example
+
+Imagine that you have to create your own CLI, named **biz** and...
+
+* You have created two plugins with your own prefix.
+    * biz-create-component
+    * biz-transpile
+* You need a plugin created in your same company but that was developed by R&D.
+    * rd-linter
+* You have found one plugin hosted by us.
+    * commular-xml-to-json
+* You have found one plugin from a third party company.
+    * twitter-compile-handlebars
+
+**That's what you need to do to use them all in your app is:**
+
+1. Edit package.json file and add a new property:
+
+```
+    "module-prefixes": []
+```
+2. Add the prefix of the R&D department
+
+```
+    "module-prefixes": "rd"
+```
+3. Add the prefix of Twitter company
+
+```
+    "module-prefixes": [ "rd", "twitter" ]
+```
+
+To get more information we recommend you:
+
+* Follow our [training](https://commular.github.io/training).
+* Read the use cases in tests.
+    * [commular tests](https://github.com/commular/commular/blob/master/test/commular_test.js)
+    * [commular-bb-generate tests](https://github.com/commular/commular-bb-generate/blob/master/test/commular-bb-generate_test.js)
+
+
+## How to develop my own plugins?
+
+### Develop your own plugins for **Commander** is as easy as follow the next steps:
+
+1. Clone the plugin template repository.
+
+```bash
+git clone https://github.com/commular/commular-plugin-template.git [YOUR_PLUGIN_NAME]
+```
+
+2. Open ```scripts/index.js``` and see that there is only the following code:
 
 ```js
-#!/usr/bin/env node
-var commular = require('commular');
-commular();
+exports.command = function (program) {
+    /**
+     * "program" returns an instance of "commander" or "vorpal".
+     * Develop your command/s in this function as usual.
+     * More information about how to do that in the website of the CLI framework
+     * you decided to use.
+    **/
+};
 ```
 
-6. Add the bin property to your package.json.
+3. Read and remove that comment and implement your command or commands in there.
+4. Install all the dependencies you need.
+5. Test your plugin.
+    * The template also gives you all the ecosystem to test your plugins easily but we don't have
+to recall you that it's just a template so it's up to you if you want to change the modules used in there.
 
-```
-  "bin": "./bin/index.js"
+    > If you want us to review your **commular** plugin we will ask you for testing.
+    > We will not accept any plugin without the required testing.
+
+
+### Good, but what if you don't want or can not publish it in NPM, Github...
+
+That's not a problem at all because we are using NPM to manage dependencies.
+
+#### Example of developing using local plugins:
+
+Assumptions:
+- The tool's name, you are developing, is 'cli'.
+- You are creating a 'plugins' folder in the root of your tool.
+- The name of your plugin is 'commular-parse-xml'
+
+1. Open your 'cli' root folder
+2. Create 'plugins' folder in the root of your 'cli' folder
+3. Copy or move 'commular-parse-xml' folder inside of 'plugins'
+4. Use npm to install it locally.
+
+```bash
+npm install --save ./plugins/commular-parse-xml
 ```
 
-To get more information I recommend to read the use cases in tests.
+5. Use ```npm link``` to work with your 'cli' tool as if it was installed globally.
+6. Test your plugin and enjoy it, once you have it finished you can publish or share it with others.
+
+## Available Commular plugins:
+
+* [commular-test](https://www.npmjs.com/package/commular-test)
+* [commular-bb-generate](https://www.npmjs.com/package/commular-bb-generate)
 
 ## Tests
 
@@ -136,8 +235,10 @@ npm test
 
 ## History
 
-* 0.3.6 - Tested in Windows/Linux/OSX
-* 0.3.4 - Stable version
+* 0.4.1 - Fixes on vorpal support.
+* 0.4.0 - Added support for Vorpal CLI Framework.
+* 0.3.6 - Tested in Windows/Linux/OSX.
+* 0.3.4 - Stable version.
 * 0.2.0 - First release.
 
 ## License
