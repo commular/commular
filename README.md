@@ -133,17 +133,17 @@ Imagine that you have to create your own CLI, named **biz** and...
 1. Edit package.json file and add a new property:
 
 ```
-    "module-prefixes": []
+    "commular-plugin-prefixes": []
 ```
 2. Add the prefix of the R&D department
 
 ```
-    "module-prefixes": "rd"
+    "commular-plugin-prefixes": "rd"
 ```
 3. Add the prefix of Twitter company
 
 ```
-    "module-prefixes": [ "rd", "twitter" ]
+    "commular-plugin-prefixes": [ "rd", "twitter" ]
 ```
 
 To get more information we recommend you:

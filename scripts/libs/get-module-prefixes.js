@@ -1,7 +1,6 @@
 function getModulePrefixes(json) {
-  var prefixes = json['modules-prefixes'];
+  var prefixes = json['commular-plugin-prefixes'];
   var result = [];
-
   if(Array.isArray(prefixes)) {
     result = result.concat(prefixes);
   } else if(typeof prefixes === 'string') {
@@ -13,7 +12,6 @@ function getModulePrefixes(json) {
   } else {
     result = result.concat([ json.name, "commular" ]);
   }
-
   return result;
 }
 

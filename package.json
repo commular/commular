@@ -1,7 +1,7 @@
 {
   "name": "commular",
   "bin": "./bin/index.js",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "A modular command line.",
   "main": "scripts/index.js",
   "scripts": {
