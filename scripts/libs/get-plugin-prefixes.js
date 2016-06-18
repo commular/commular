@@ -1,4 +1,4 @@
-function getModulePrefixes(json) {
+function getPluginPrefixes(json) {
   var prefixes = json['commular-plugin-prefixes'];
   var result = [];
   if(Array.isArray(prefixes)) {
@@ -15,4 +15,4 @@ function getModulePrefixes(json) {
   return result;
 }
 
-module.exports = getModulePrefixes;
+module.exports = getPluginPrefixes;

@@ -1,18 +1,34 @@
-var program = require('commander');
 var npm = require('npm');
 var packageJSON = require( process.cwd() + '/package.json');
-var getModulePrefixes = require('./libs/get-module-prefixes');
+var getPluginPrefixes = require('./libs/get-plugin-prefixes');
 var getFrameworkInstance = {
-  commander: function (program) {
+  commander: function () {
+    var program = require('commander');
+    program
+      .version(packageJSON.version);
     return program;
   },
-  vorpal: function (Program) {
-    return new Program();
+  vorpal: function () {
+    var Vorpal = require('vorpal');
+    var program = new Vorpal();
+    program
+      .version(packageJSON.version);
+
+    return program;
   }
 };
-var q = require('q');
-var modulesPrefixes =  getModulePrefixes(packageJSON);
 
+var executeAfterAddCommands = {
+  commander: function (program) {
+    program.parse(process.argv);
+  },
+  vorpal: function (program) {
+    program.parse(process.argv, {});
+  }
+};
+
+var q = require('q');
+var modulesPrefixes =  getPluginPrefixes(packageJSON);
 
 function commular() {
   var deferred = q.defer();
@@ -24,7 +40,8 @@ function commular() {
     }
     npm.commands.ls([], true, function(err, data) {
       var keys;
-      var customCLI = packageJSON.cli;
+      var program;
+      var customCLI = packageJSON['commular-cli'];
       var framework = customCLI || "commander";
       if (err) {
         return deferred.reject(err);
@@ -33,21 +50,16 @@ function commular() {
 
       try{
         keys.forEach(function(dependency) {
-          var cli;
           if(dependency === framework) {
-            cli = require(framework);
-            program = getFrameworkInstance[framework](cli);
+            program = getFrameworkInstance[framework]();
             throw new Error('CLI Framework resolved as: ' + framework);
           }
         });
       }catch(er){
-        if(commular.debug) {
+        if(commular.test) {
           console.log('\n', er.message, '\n');
         }
       }
-
-      program
-        .version(packageJSON.version);
 
       keys.forEach(function(dependency) {
         modulesPrefixes.forEach(function (prefix) {
@@ -56,14 +68,14 @@ function commular() {
           }
         });
       });
-      program.parse(process.argv);
+
+      if(!commular.test) {
+        executeAfterAddCommands[framework](program);
+      }
       deferred.resolve(program);
     });
   });
   return deferred.promise;
 }
-commular.getProgram = function () {
-  return program;
-};
 
 module.exports = commular;

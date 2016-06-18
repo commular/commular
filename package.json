@@ -1,7 +1,7 @@
 {
   "name": "commular",
   "bin": "./bin/index.js",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "A modular command line.",
   "main": "scripts/index.js",
   "scripts": {
@@ -23,17 +23,16 @@
   "homepage": "https://github.com/commular/commular.git#readme",
   "dependencies": {
     "npm": "^3.9.5",
-    "q": "^1.4.1",
-    "commular-test": "^0.1.0"
+    "q": "^1.4.1"
   },
   "devDependencies": {
-    "commander": "^2.9.0",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-nodeunit": "^1.0.0",
     "mock-require": "^1.3.0",
+    "commander": "^2.9.0",
     "vorpal": "^1.11.2"
   }
 }
