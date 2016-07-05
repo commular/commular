@@ -39,7 +39,7 @@ npm install commular --save
 ```
 
 
-## Quickstart:`
+## Quickstart:
 
 1. Use git to clone **Commular** template CLI repo.
 
