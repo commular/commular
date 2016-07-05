@@ -36,7 +36,7 @@ Because of all that **Commular** was designed and developed to be a pluggable fr
 
 ```bash
 npm install commular --save
-``
+```
 
 
 ## Quickstart:`
