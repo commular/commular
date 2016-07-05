@@ -31,7 +31,7 @@ Because of all that **Commular** was designed and developed to be a pluggable fr
 
 * node >= 5.0.0
 * npm >= 3.0.0
-* commander >= 2.9.0
+* commander >= 2.9.0 or vorpal >= 1.0.0
 
 
 ```bash
