@@ -32,12 +32,12 @@ var modulesPrefixes =  getPluginPrefixes(packageJSON);
 
 function commular() {
   var deferred = q.defer();
-  npm.load({
-    loaded: false
-  }, function(error) {
+  npm.config.loaded = false;
+  npm.load(function(error) {
     if(error) {
-      return deferred.reject(err);
+      return deferred.reject(error);
     }
+
     npm.commands.ls([], true, function(err, data) {
       var keys;
       var program;
